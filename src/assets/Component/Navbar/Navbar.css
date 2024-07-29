@@ -1,0 +1,23 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(231, 245, 246);
+    padding: 20px;
+}
+.linktag{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}
+.sec1{
+    display: flex;
+    gap: 30px;
+    color: black;
+}
+.sec2{
+    display: flex;
+    gap: 30px;
+}

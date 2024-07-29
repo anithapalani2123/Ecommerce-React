@@ -1,0 +1,48 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.AddContainer{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(234, 250, 250);
+    gap: 40px;
+    padding: 50px;
+    margin: auto;
+    margin-top:60px;
+    height: fit-content;
+    box-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.2);
+    border-radius: 5px; 
+
+}
+.Add{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+
+}
+.AddContainer button{
+    padding: 10px ;
+    border: none;
+    background-color: blue;
+    color: white;
+    font-size: large;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+.AddContainer button:hover{
+    cursor: pointer;
+}
+input,textarea{
+    
+    border: none;
+    padding: 10px;
+    outline: none;
+}
