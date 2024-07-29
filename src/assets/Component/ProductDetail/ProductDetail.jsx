@@ -5,9 +5,10 @@ import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetail = () => {
-  const nav=useNavigate();
+  const navigate=useNavigate();
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+
   console.log("Params :", id);
   // console.log(image);
   const fetchProductById = async () => {
@@ -27,7 +28,7 @@ const ProductDetail = () => {
   }, []);
 
   const updateHandler=(id)=>{
-    nav(`/product/update/${id}`)
+    navigate(`/product/update/${id}`)
 
   }
   const DeleteHandler= async()=>{
