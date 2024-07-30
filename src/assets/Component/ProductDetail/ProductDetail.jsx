@@ -45,7 +45,7 @@ const ProductDetail = () => {
       );
 
       alert("deleted successfully")
-      nav('/');
+      navigate('/');
     }
     catch(error)
     {
