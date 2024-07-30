@@ -30,6 +30,7 @@ const AllProduct = () => {
         navigate(`/product/${id}`);
         // <ProductDetail/>
     }
+    
   return (
     <div>
         <div className='ProductContainer' >
