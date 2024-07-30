@@ -41,7 +41,7 @@ const Update = () => {
       setdescription(productData.description)
       setquantity(productData.quantity)
       setprice(productData.price)
-      setcategory(productData.quantity)
+      setcategory(productData.category)
      
     }
     catch(error)
