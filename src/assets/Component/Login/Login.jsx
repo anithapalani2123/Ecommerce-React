@@ -26,7 +26,8 @@ const Login = () => {
                     password:password,
                 },
             });
-            sessionStorage.setItem('token',response.data.data.token)
+            sessionStorage.setItem('token',response.data.data.token);
+            sessionStorage.setItem('userName',response.data.data.userName)
             console.log(response.data)
             console.log(response.data.data.token);
             alert("successfully login");

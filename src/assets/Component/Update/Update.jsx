@@ -56,6 +56,7 @@ const Update = () => {
   const updateFormSubmit=async(event)=>{
     event.preventDefault();
     console.log(name,description,quantity,price,category);
+    const token=sessionStorage.getItem("token")
     try{
       const response=await axios.put(`https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`,{
 
@@ -67,7 +68,13 @@ const Update = () => {
           category:category,
         }
           
-        });
+        },
+        {
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        }
+      );
         navigate(`/product/${id}`);
       console.log(response.data.data);
       
@@ -76,7 +83,7 @@ const Update = () => {
     catch(error)
     {
       alert(error)
-      console(error);
+      console.log(error);
     }
 
   }
