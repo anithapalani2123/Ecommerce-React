@@ -1,0 +1,1 @@
+export const IMAGE_URL = "https://res.cloudinary.com/dnnz8uiyp/image/upload/v1722316320/Image";

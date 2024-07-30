@@ -5,6 +5,7 @@ import './AllProduct.css'
 import image from '../images/bag.png'
 import { useState,useEffect } from 'react'
 import ProductDetail from '../ProductDetail/ProductDetail';
+import { IMAGE_URL } from '../../../info';
 const AllProduct = () => {
     const [products,setProducts]=useState([]);
     const navigate=useNavigate();
@@ -34,7 +35,7 @@ const AllProduct = () => {
         <div className='ProductContainer' >
             {products.map((product,index)=>(
                 <div className='Product' key={index} onClick={() => productHandler(product._id)}>
-                    <img src={image} alt="image" />
+                    <img src={`${IMAGE_URL}/${product.imageName}`} alt="image" />
                     <div className='desc'>
                         <p id='name'>{product.name}</p>
                         <p>{product.description}</p>
