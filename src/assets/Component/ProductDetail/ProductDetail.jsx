@@ -20,6 +20,7 @@ const ProductDetail = () => {
       console.log(response.data);
       setProduct(response.data.data);
     } catch (error) {
+     
       console.log(error);
     }
   };
