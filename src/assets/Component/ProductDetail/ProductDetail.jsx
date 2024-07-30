@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetail.css";
 import image from "../images/bag.png";
+import IMAGE_URL from "../../../info.js"
 import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -50,7 +51,7 @@ const ProductDetail = () => {
         {product && <div
           className="Singlecontainer">
           <div className="Singlecontainer1">
-            <img src={image} alt="image" />
+            <img src={`${IMAGE_URL}/${product.imageName}`} alt="image" />
           </div>
           <div className="Singlecontainer2">
             <div className="header">
