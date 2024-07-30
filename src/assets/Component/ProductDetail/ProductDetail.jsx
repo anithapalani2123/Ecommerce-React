@@ -35,7 +35,14 @@ const ProductDetail = () => {
   }
   const DeleteHandler= async()=>{
     try{
-      const response=await axios.delete(`https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`);
+      const token=sessionStorage.getItem("token")
+      const response=await axios.delete(`https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`,
+        {
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        }
+      );
 
       alert("deleted successfully")
       nav('/');

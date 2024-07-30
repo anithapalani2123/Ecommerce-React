@@ -50,6 +50,7 @@ const Add = () => {
       {
         throw new Error("file not uploaded")
       }
+      const token=sessionStorage.getItem('token')
       const response=await axios.post('https://ecommerce-practice-chi.vercel.app/api/v1/product',{
           product:{
             name:name,
@@ -59,7 +60,13 @@ const Add = () => {
             category:category,
             imageName:imageResponse.data.cldRes.display_name
           }
-        });
+        },
+        {
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        }
+      );
       console.log(response.data.data);
       nav('/');
 
