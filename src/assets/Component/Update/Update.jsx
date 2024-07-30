@@ -75,7 +75,8 @@ const Update = () => {
           }
         }
       );
-        navigate(`/product/${id}`);
+        // navigate(`/product/${id}`);
+        navigate('/')
       console.log(response.data.data);
       
 
