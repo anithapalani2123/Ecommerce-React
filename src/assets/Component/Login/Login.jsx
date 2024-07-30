@@ -28,9 +28,10 @@ const Login = () => {
             });
             sessionStorage.setItem('token',response.data.data.token);
             sessionStorage.setItem('userName',response.data.data.userName)
+            sessionStorage.setItem('role',response.data.data.role)
             console.log(response.data)
             console.log(response.data.data.token);
-            alert("successfully login");
+            // alert("successfully login");
             nav('/');
 
 

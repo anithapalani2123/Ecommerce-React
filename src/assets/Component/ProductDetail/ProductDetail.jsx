@@ -7,8 +7,15 @@ import axios from "axios";
 
 const ProductDetail = () => {
   const navigate=useNavigate();
+  const [role,setRole]=useState("");
   const [product, setProduct] = useState(null);
   const { id } = useParams();
+  
+
+  useEffect(()=>{
+    setRole(sessionStorage.getItem("role"));
+
+  },[])
 
   console.log("Params :", id);
   // console.log(image);
@@ -73,11 +80,14 @@ const ProductDetail = () => {
               <p>category:{product.category}</p>
 
             </div>
-            <div className="Btns">
+            {
+              role==="admin" && <div className="Btns">
               <button onClick={()=>updateHandler(product._id)}>Update</button>
               <button onClick={DeleteHandler}>Delete</button>
 
             </div>
+            }
+            
           </div>
           
           

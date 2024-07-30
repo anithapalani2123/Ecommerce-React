@@ -11,6 +11,8 @@ const Update = () => {
   const [price,setprice]=useState();
   const [category,setcategory]=useState("");
 
+  
+
   const NameHandler=(event)=>{
     setName(event.target.value);
 
