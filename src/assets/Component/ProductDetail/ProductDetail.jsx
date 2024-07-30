@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetail.css";
 import image from "../images/bag.png";
-import IMAGE_URL from "../../../info.js"
+import {IMAGE_URL} from "../../../info.js"
 import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 
