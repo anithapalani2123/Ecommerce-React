@@ -21,7 +21,7 @@ const RoutesPath = () => {
             <Route path='/auth/signup' element={<Register/>}></Route>
             <Route path='/product/:id' element={<ProductDetail/>}></Route>
             <Route path='/auth/otp/:id' element={<Otp/>}></Route>
-            <Route path='*' element={<Error/>}></Route>
+            
         
         {
           role && role==='admin' && 
@@ -32,6 +32,7 @@ const RoutesPath = () => {
             
          
         }
+        <Route path='*' element={<Error/>}></Route>
          </Routes>
         
 
