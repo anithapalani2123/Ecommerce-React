@@ -21,19 +21,18 @@ const RoutesPath = () => {
             <Route path='/auth/signup' element={<Register/>}></Route>
             <Route path='/product/:id' element={<ProductDetail/>}></Route>
             <Route path='/auth/otp/:id' element={<Otp/>}></Route>
-            
-        
+            <Route path='*' element={<Error/>}></Route>
+        </Routes>
         {
           role && role==='admin' && 
-          <div>
+          <Routes>
             <Route path='/product/new' element={<Add/>}></Route>
             <Route path='/product/update/:id' element={<Update/>}></Route>
-            </div>
+          </Routes> 
             
          
         }
-        <Route path='*' element={<Error/>}></Route>
-         </Routes>
+         
         
 
       
