@@ -8,23 +8,30 @@ import ProductDetail from '../ProductDetail/ProductDetail';
 import { IMAGE_URL } from '../../../info';
 const AllProduct = () => {
     const [products,setProducts]=useState([]);
+    const [category,setCategory] = useState("");
     const navigate=useNavigate();
     async function fetchProduct(){
         try{
-            const response= await axios.get("https://ecommerce-practice-chi.vercel.app/api/v1/product");
+            const response= await axios.get(`https://ecommerce-practice-chi.vercel.app/api/v1/product?category=${category}`);
             // console.log(response);
             // console.log(response.data);
-            setProducts(response.data.data)
-            console.log(response.data.data);
+            setProducts(response.data.data);
+            // console.log(response.data.data);
+            
         }
         catch(error){
-            console.log(error);
+            // console.log(error);
+            setProducts([]);
 
         }
     }
+    const categoryHandler = (event) => {
+        // console.log(event.target.value)
+        setCategory(event.target.value);
+    }
     useEffect(()=>{
         fetchProduct();
-    },[])
+    },[category])
     const productHandler=(id)=>{
         console.log(id)
         navigate(`/product/${id}`);
@@ -33,6 +40,15 @@ const AllProduct = () => {
     
   return (
     <div>
+        <div>
+            <select onChange={categoryHandler}>
+
+                <option value="">All Products</option>
+                <option>Electronics</option>
+                <option>Accessories</option>
+                <option>Footwear</option>
+            </select>
+        </div>
         <div className='ProductContainer' >
             {products.map((product,index)=>(
                 <div className='Product' key={index} onClick={() => productHandler(product._id)}>
