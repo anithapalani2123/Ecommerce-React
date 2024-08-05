@@ -10,6 +10,8 @@ const Update = () => {
   const [quantity,setquantity]=useState();
   const [price,setprice]=useState();
   const [category,setcategory]=useState("");
+  const[file,setFile]=useState(null);
+  const [fileName, setFileName] = useState("");
 
   
 
@@ -32,7 +34,16 @@ const Update = () => {
   const categoryHandler=(event)=>{
     setcategory(event.target.value);
 
+
   }
+
+  const fileHandler=(event)=>{
+    const SelectedFile=event.target.files[0];
+    setFile(SelectedFile);
+    setFileName(SelectedFile.name)
+  }
+
+
   const getfunction=async (event)=>{
     try{
       const response=await axios.get(`https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`)
@@ -43,6 +54,7 @@ const Update = () => {
       setdescription(productData.description)
       setquantity(productData.quantity)
       setprice(productData.price)
+      setFileName(productData.imageName)
       setcategory(productData.category)
      
     }
@@ -58,8 +70,16 @@ const Update = () => {
   const updateFormSubmit=async(event)=>{
     event.preventDefault();
     console.log(name,description,quantity,price,category);
+    const formData=new FormData();
+    formData.append('image',file);
     const token=sessionStorage.getItem("token")
     try{
+      const imageResponse= await axios.post('https://ecommerce-practice-chi.vercel.app/api/v1/upload',formData)
+      console.log(imageResponse);
+      if(imageResponse.status!==201)
+      {
+        throw new Error("file not uploaded")
+      }
       const response=await axios.put(`https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`,{
 
         product:{
@@ -68,6 +88,7 @@ const Update = () => {
           quantity:quantity,
           price:price,
           category:category,
+          imageName:imageResponse.data.cldRes.display_name
         }
           
         },
@@ -130,6 +151,9 @@ const Update = () => {
                   placeholder='category'
                   onChange={categoryHandler}
                   value={category}/>
+                  <label htmlFor="file"></label>
+                  <input type="file"
+                  onChange={fileHandler} />
                 <button type='submit'>UPDATE</button>
 
             </div>
