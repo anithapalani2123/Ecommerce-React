@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const Login = () => {
     const nav=useNavigate();
     const [email,setEmail] = useState("");
@@ -31,13 +32,13 @@ const Login = () => {
             sessionStorage.setItem('role',response.data.data.role)
             console.log(response.data)
             console.log(response.data.data.token);
-            // alert("successfully login");
+            toast.success("successfully login");
             nav('/');
 
 
         }
         catch(error){
-            alert(error.response.data.message)
+            toast.error(error.response.data.message)
             console.log(error);
         }
     }

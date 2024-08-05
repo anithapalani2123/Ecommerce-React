@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 import {Link,useNavigate} from 'react-router-dom'
 import './Register.css';
 import axios from 'axios';
@@ -38,10 +39,11 @@ const Register = () => {
       
       console.log(response.data)
       console.log(response.data.data.id)
+      toast.success("Account Created Successfully!")
       nav(`/auth/otp/${response.data.data.id}`);
     }
     catch(error){
-      alert(error)
+      toast.error(error.response.data.message)
       console.log(error)
     }
 

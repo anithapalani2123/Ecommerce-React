@@ -13,6 +13,7 @@ const Navbar = () => {
   const LogoutHandler=()=>{
     sessionStorage.clear()
     setUserName("")
+    setRole("");
     
   }
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import './Add.css'
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 const Add = () => {
   const nav=useNavigate();
@@ -73,7 +74,7 @@ const Add = () => {
     }
     catch(error)
     {
-      alert(error)
+      toast.error(error.response.data.message)
       console.log(error);
     }
 

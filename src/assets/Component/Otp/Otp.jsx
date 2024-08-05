@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+
 import './Otp.css'
 import { useParams,useNavigate } from 'react-router-dom';
 const Otp = () => {
@@ -23,12 +25,12 @@ const Otp = () => {
                 otp:otp
             });
             console.log(response.data.data)
-            alert("successfully verified")
+            toast.success("OTP successfully verified")
             nav('/')
         }
         catch(error)
         {
-            alert(error)
+            toast.error(error.response.data.message)
             console.log(error);
         }
     }

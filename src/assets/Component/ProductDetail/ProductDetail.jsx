@@ -8,6 +8,7 @@ import axios from "axios";
 const ProductDetail = () => {
   const navigate=useNavigate();
   const [role,setRole]=useState("");
+  // const [productId,setProductId]=useState();
   const [product, setProduct] = useState(null);
   const { id } = useParams();
   
@@ -25,6 +26,10 @@ const ProductDetail = () => {
         `https://ecommerce-practice-chi.vercel.app/api/v1/product/${id}`
       );
       console.log(response.data);
+      
+      // setProductId(response.data._id);
+      // console.log(response.data.data);
+
       setProduct(response.data.data);
     } catch (error) {
      
@@ -59,6 +64,29 @@ const ProductDetail = () => {
       console.log(error)
     }
   }
+  const cartHandler=async() =>{
+    
+    try{
+      const token=sessionStorage.getItem('token');
+      const response=await axios.post(`https://ecommerce-practice-chi.vercel.app/api/v1/cart`,{
+        product:{
+          productId:id
+        },
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      })
+      
+      console.log(response.data.data)
+    }
+    catch(error)
+    {
+      console.log(error)
+    }
+
+
+
+  }
 
   return (
     <>
@@ -80,6 +108,10 @@ const ProductDetail = () => {
               <p>category:{product.category}</p>
 
             </div>
+            <div>
+              <button onClick={cartHandler}>Add to Cart</button>
+            </div>
+
             {
               role==="admin" && <div className="Btns">
               <button onClick={()=>updateHandler(product._id)}>Update</button>
